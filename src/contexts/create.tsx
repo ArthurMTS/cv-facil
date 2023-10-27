@@ -15,7 +15,6 @@ interface CreateProviderProps extends CVProps {
   setLinkedin: (value: string) => void;
   setGithub: (value: string) => void;
   setResume: (value: string) => void;
-  profExp: ProfExpProps[];
   addProfExp: (exp: ProfExpProps) => void;
   rmvProfExp: (id: string) => void;
   editProfExp: (exp: ProfExpProps) => void;
@@ -25,6 +24,9 @@ interface CreateProviderProps extends CVProps {
   addCertification: (cert: CertificationProps) => void;
   rmvCertification: (id: string) => void;
   editCertification: (cert: CertificationProps) => void;
+  setProfExp: (value: ProfExpProps[]) => void;
+  setCompetencies: (value: CompetencyProps[]) => void;
+  setCertifications: (value: CertificationProps[]) => void;
 }
 
 export const CreateContext = React.createContext({} as CreateProviderProps);
@@ -127,6 +129,9 @@ export function CreateProvider({ children }: { children: React.ReactNode }) {
         addCertification,
         rmvCertification,
         editCertification,
+        setProfExp,
+        setCertifications,
+        setCompetencies,
       }}
     >
       {children}

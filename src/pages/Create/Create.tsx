@@ -10,12 +10,15 @@ import {
   ProfExpView,
   CompetenciesView,
   CertificationsView,
+  FieldsDesc,
 } from "./components";
 import { CreateContext } from "@/contexts/create";
 import { maskPhone } from "@/config/masks/phone";
 import { textOnly } from "@/config/masks/textOnly";
+import { api } from "@/config/api";
 
 export function Create() {
+  const [loading, setLoading] = React.useState(false);
   const {
     name,
     setName,
@@ -37,6 +40,9 @@ export function Create() {
     addCompetency,
     certifications,
     addCertification,
+    setProfExp,
+    setCertifications,
+    setCompetencies,
   } = React.useContext(CreateContext);
 
   function resetInputs() {
@@ -47,12 +53,67 @@ export function Create() {
     setLinkedin("");
     setGithub("");
     setResume("");
+    setProfExp([]);
+    setCertifications([]);
+    setCompetencies([]);
+  }
+  async function onFormSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await api.post("/cvs", {
+        job,
+        phone,
+        linkedin,
+        github,
+        resume,
+        userId: "22486745-bac2-4bee-a316-633c170bc4bc",
+      });
+      const cVId = response.data;
+
+      for (const exp of profExp) {
+        await api.post("/exp", {
+          cVId,
+          title: exp?.title,
+          city: exp?.city,
+          state: exp?.state,
+          description: exp?.description,
+          start: `${exp?.start.month} ${exp?.start.year}`,
+          end: `${exp?.end.month} ${exp?.end.year}`,
+        });
+      }
+      for (const comp of competencies) {
+        await api.post("/comp", {
+          title: comp?.title,
+          cVId,
+        });
+      }
+      for (const cert of certifications) {
+        await api.post("/cert", {
+          title: cert?.title,
+          year: +cert?.year,
+          cVId,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erro, tente novamente");
+    } finally {
+      setLoading(false);
+      resetInputs();
+      alert("Currículo cadastrado com sucesso!");
+    }
   }
 
   return (
     <div className="bg-slate-200 pb-1">
       <Header />
-      <form className="bg-slate-50 my-11 md:mx-10 lg:mx-48 p-11 lg:px-40 shadow-lg rounded flex flex-col gap-y-3.5">
+      <form
+        onSubmit={onFormSubmit}
+        className="bg-slate-50 my-[45px] mx-5 pt-20 pb-5 px-5 lg:mx-40 xl:py-[17px] xl:mx-[150px] xl:px-[260px] shadow-lg rounded flex flex-col gap-y-3.5 relative"
+      >
+        <FieldsDesc className="absolute top-[9px] left-[20px]" />
         <Input
           label="Nome completo"
           value={name}
@@ -175,7 +236,12 @@ export function Create() {
 
         <Line />
         <div className="self-center flex gap-5">
-          <RoundButton type="submit">Finalizar Currículo</RoundButton>
+          <RoundButton
+            className={`flex ${loading ? "animate-bounce" : ""}`}
+            type="submit"
+          >
+            {loading ? "Processando..." : "Finalizar Currículo"}
+          </RoundButton>
           <RoundButton type="reset" onClick={resetInputs}>
             Limpar
           </RoundButton>

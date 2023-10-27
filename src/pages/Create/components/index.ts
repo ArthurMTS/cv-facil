@@ -9,3 +9,4 @@ export { SectionTitle } from "./SectionTitle";
 export { IconButton } from "./IconButton";
 export { MonthInput } from "./MonthInput";
 export { Line } from "./Line";
+export { FieldsDesc } from "./FieldsDesc";

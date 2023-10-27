@@ -2,6 +2,8 @@ import React from "react";
 
 import hidePasswordIcon from "@/assets/icons/hide.png";
 import showPasswordIcon from "@/assets/icons/show.png";
+import AlertIcon from "@/assets/icons/alert.svg";
+import DotsIcon from "@/assets/icons/dots.png";
 
 interface InputProps {
   className?: string;
@@ -45,11 +47,12 @@ export function Input({
     <label
       className={`${className} flex flex-col font-medium text-slate-900 text-base cursor-pointer capitalize`}
     >
-      <span
-        className={`${
-          required ? "after:content-['*'] after:ml-0.5 after:text-red-500" : ""
-        }`}
-      >
+      <span className="flex gap-[5px]">
+        {required ? (
+          <img className="mb-[1px]" src={AlertIcon} />
+        ) : (
+          <img className="w-[15px] h-[17px] mt-[2px]" src={DotsIcon} />
+        )}
         {label}
       </span>
       {rows && rows > 1 ? (

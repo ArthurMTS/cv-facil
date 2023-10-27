@@ -164,9 +164,9 @@ export function ProfExpForm({
           </div>
 
           <div className="flex gap-5 justify-center self-center flex-wrap">
-            <fieldset className="border rounded p-5">
+            <fieldset className="border rounded p-3">
               <legend className="font-bold">Início</legend>
-              <div className="flex gap-10">
+              <div className="flex gap-5">
                 <MonthInput
                   label="Mês"
                   value={startMonthState}
@@ -188,9 +188,9 @@ export function ProfExpForm({
                 />
               </div>
             </fieldset>
-            <fieldset className="border rounded p-5">
+            <fieldset className="border rounded p-3">
               <legend className="font-bold">Fim</legend>
-              <div className="flex gap-10">
+              <div className="flex gap-5">
                 <MonthInput
                   label="Mês"
                   value={endMonthState}
