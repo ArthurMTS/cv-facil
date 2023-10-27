@@ -18,10 +18,10 @@ export function Preview() {
   return (
     <div className="bg-[#E5E5E5] flex flex-col">
       <Header />
-      <div className="flex justify-center self-center items-center mt-[40px] relative">
+      <div className="flex flex-col justify-center self-center items-center mt-[40px] relative">
         <div
           id="CVElement"
-          className="bg-[#F9F9F9] flex flex-col rounded-[5px] w-[70%] pt-[42px] pl-[38px]  mb-[38px] "
+          className="flex flex-col rounded-[5px] w-[70%] pt-[42px] pl-[38px]  mb-[38px] "
         >
           <h1 className="flex text-[32px] font-bold basis-full justify-center">
             Nome completo do usuário
@@ -50,16 +50,16 @@ export function Preview() {
               Mês ano - Mês ano <span className="font-bold">Título</span>,
               Cidade, Estado.{" "}
             </span>
-            <span className="w-[73%]">
+            <span className="w-[90%]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               id velit sed lorem interdum bibendum ut quis libero. Proin
               scelerisque nisi ut quam egestas venenatis. Aliquam erat volutpat.{" "}
             </span>
-            <span className="w-[73%] mt-[10px]">
+            <span className="w-[90%] mt-[10px]">
               Mês ano - Mês ano <span className="font-bold">Título</span>,
               Cidade, Estado.{" "}
             </span>
-            <span className="w-[73%]">
+            <span className="w-[90%]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               id velit sed lorem interdum bibendum ut quis libero. Proin
               scelerisque nisi ut quam egestas venenatis. Aliquam erat volutpat.{" "}
@@ -95,12 +95,12 @@ export function Preview() {
             </span>
           </div>
         </div>
-        <div className="flex justify-end mr-[13px] mb-[22px] absolute bottom-10 right-0">
+        <div className="flex justify-end w-[60%] mr-[13px] mb-[22px] bottom-10 right-0 drop-shadow-[5px_5px_4px_rgba(0, 0, 0, 0.25)]">
           <ReactToPrint
             trigger={() => (
               <RoundButton
                 onClick={handlePrint}
-                className="w-[50px] h-[50px] flex justify-center items-center"
+                className="w-[50px] h-[50px] flex justify-center items-center "
               >
                 <img
                   src={PrinterIcon}
