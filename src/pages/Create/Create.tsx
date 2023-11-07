@@ -14,6 +14,7 @@ import {
 import { CreateContext } from "@/contexts/create";
 import { maskPhone } from "@/config/masks/phone";
 import { textOnly } from "@/config/masks/textOnly";
+import { Link } from "react-router-dom";
 
 export function Create() {
   const {
@@ -56,7 +57,7 @@ export function Create() {
         <Input
           label="Nome completo"
           value={name}
-          onChange={e => setName(textOnly(e.target.value))}
+          onChange={(e) => setName(textOnly(e.target.value))}
           placeholder="Ex.: José da Silva"
           minlength={1}
           maxlength={70}
@@ -65,7 +66,7 @@ export function Create() {
         <Input
           label="Título do cargo"
           value={job}
-          onChange={e => setJob(e.target.value)}
+          onChange={(e) => setJob(e.target.value)}
           placeholder="Ex.: Desenvolvedor Front-end"
           minlength={1}
           maxlength={50}
@@ -77,7 +78,7 @@ export function Create() {
             label="E-mail"
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             pattern="[a-z0-9.]+@[a-z0-9]+\.[a-z]+"
             placeholder="Ex.: name@domain.com"
             required
@@ -86,7 +87,7 @@ export function Create() {
             className="w-full"
             label="Celular"
             value={phone}
-            onChange={e => setPhone(maskPhone(e.target.value))}
+            onChange={(e) => setPhone(maskPhone(e.target.value))}
             placeholder="Ex.: (xx) x xxxx-xxxx"
             pattern="\([0-9]{2}\) [0-9]{1} [0-9]{4}-[0-9]{4}"
             required
@@ -97,7 +98,7 @@ export function Create() {
             className="w-full"
             label="Linkedin"
             value={linkedin}
-            onChange={e => setLinkedin(e.target.value)}
+            onChange={(e) => setLinkedin(e.target.value)}
             placeholder="Ex.: https://www.linkedin.com/in/username"
             minlength={29}
             maxlength={50}
@@ -106,7 +107,7 @@ export function Create() {
             className="w-full"
             label="Github"
             value={github}
-            onChange={e => setGithub(e.target.value)}
+            onChange={(e) => setGithub(e.target.value)}
             placeholder="Ex.: https://github.com/username"
             minlength={20}
             maxlength={40}
@@ -116,7 +117,7 @@ export function Create() {
           label="Resumo Profissional"
           rows={5}
           value={resume}
-          onChange={e => setResume(e.target.value)}
+          onChange={(e) => setResume(e.target.value)}
           placeholder="Breve descrição de suas formações, capacitações e habilidades..."
           minlength={142}
           maxlength={640}
@@ -125,7 +126,7 @@ export function Create() {
 
         <Line />
         <SectionTitle>Experiências Profissionais</SectionTitle>
-        {profExp.map(exp => (
+        {profExp.map((exp) => (
           <ProfExpView
             key={exp.id}
             id={exp.id}
@@ -146,7 +147,7 @@ export function Create() {
 
         <Line />
         <SectionTitle>Competências</SectionTitle>
-        {competencies.map(comp => (
+        {competencies.map((comp) => (
           <CompetenciesView
             key={comp.id}
             id={comp.id}
@@ -160,7 +161,7 @@ export function Create() {
 
         <Line />
         <SectionTitle>Certificações</SectionTitle>
-        {certifications.map(cert => (
+        {certifications.map((cert) => (
           <CertificationsView
             key={cert.id}
             id={cert.id}
@@ -175,6 +176,7 @@ export function Create() {
 
         <Line />
         <div className="self-center flex gap-5">
+          <Link to={"/preview"}>preview</Link>
           <RoundButton type="submit">Finalizar Currículo</RoundButton>
           <RoundButton type="reset" onClick={resetInputs}>
             Limpar

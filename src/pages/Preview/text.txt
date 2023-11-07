@@ -1,0 +1,16 @@
+Ana Lara Carvalho Mesquita
+desenvolvedora frontend 
+analara714@gmail.com
+https://www.linkedin.com/in/analaracarvalho/
+https://github.com/AnaLara714
+(88) 8 8888-8888
+
+Atualmente sou graduanda do curso de Engenharia de Computação, em paralelo aos estudos da faculdade, participo como desenvolvedora front-end no projeto 'Proposal of a Reusable Open Banking Platform to Reduce the Drop-out and Financial Exclusion Rates in Crateús', onde utilizo as ferramentas como React, Typescript, MUI e Tailwind, além de atuar como presidente da empresa júnior da graduação, a Loading Desenvolvimento Jr.
+E é claro, no meio disso tudo estou sempre buscando mais conhecimentos, experiências e evoluir o nível.
+Veja meus projetos no github: github.com/AnaLara714
+
+Front-end na FASTEF
+Sobral
+Ceará
+
+Colaboro como Desenvolvedora Front-end junto ao projeto 'Proposal of a Reusable Open Banking Platform to Reduce the Drop-out and Financial Exclusion Rates in Crateús'. Neste projeto, a equipe irá desenvolver um software, intitulado Open Source Banking (OSB), que servirá ao propósito do Open Banking. O OSB é a primeira plataforma de internet banking licenciada como open source no mundo. Open Banking é um conjunto de regras e princípios que, quando seguidos, permitem a um banco ou a uma instituição financeira disponibilizar sua infraestrutura computacional bem como compartilhar sua camada de dados com outras organizações. Isso permite que empresas possam acessar essa tecnologia para modernizar seu departamento contábil e/ou oferecer os seus próprios serviços financeiros.
