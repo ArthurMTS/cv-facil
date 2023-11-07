@@ -2,7 +2,6 @@ import { getMonth, months } from "@/utils/getMonth";
 import AlertIcon from "@/assets/icons/alert.svg";
 import DotsIcon from "@/assets/icons/dots.png";
 
-
 interface MonthProps {
   className?: string;
   label: string;

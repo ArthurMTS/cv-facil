@@ -13,6 +13,7 @@ import {
   FieldsDesc,
 } from "./components";
 import { CreateContext } from "@/contexts/create";
+import { UserContext } from "@/contexts/user";
 import { maskPhone } from "@/config/masks/phone";
 import { textOnly } from "@/config/masks/textOnly";
 import { api } from "@/config/api";
@@ -44,6 +45,7 @@ export function Create() {
     setCertifications,
     setCompetencies,
   } = React.useContext(CreateContext);
+  const { user } = React.useContext(UserContext);
 
   function resetInputs() {
     setName("");
@@ -60,6 +62,7 @@ export function Create() {
   async function onFormSubmit(event: React.FormEvent) {
     event.preventDefault();
     setLoading(true);
+    let cVId;
 
     try {
       const response = await api.post("/cvs", {
@@ -68,9 +71,9 @@ export function Create() {
         linkedin,
         github,
         resume,
-        userId: "22486745-bac2-4bee-a316-633c170bc4bc",
+        userId: user?.id,
       });
-      const cVId = response.data;
+      cVId = response.data;
 
       for (const exp of profExp) {
         await api.post("/exp", {
@@ -98,6 +101,7 @@ export function Create() {
       }
     } catch (err) {
       console.error(err);
+      if (cVId) await api.delete(`/cvs/${cVId}`);
       alert("Erro, tente novamente");
     } finally {
       setLoading(false);
