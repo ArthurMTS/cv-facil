@@ -1,15 +1,38 @@
 import iconCV from "@/assets/icons/file-textWhite.svg";
 import { RoundButton } from "@/components";
+import { api } from "@/config/api";
 import iconView from "@/assets/icons/view.png";
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "@/contexts/user";
 
 export function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [seePassword, setSeePassword] = React.useState(false);
 
+  const { user, setUser } = useContext(UserContext);
+
   const SeePasswordButtonClick = () => {
     setSeePassword(!seePassword);
+  };
+
+  const onLogInButtonClick = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const response = await api.post("/login", {
+      email,
+      password,
+    });
+
+    const token = response.data?.accessToken;
+
+    localStorage.setItem("token", token);
+
+    var payload = token.split(".")[1];
+    var base64 = payload.replace("-", "+").replace("_", "/");
+    console.log(JSON.parse(window.atob(base64)));
+    setUser(JSON.parse(window.atob(base64)));
+    window.location.href = "/";
   };
 
   return (
@@ -20,7 +43,9 @@ export function Login() {
             <img src={iconCV} />
             CV-facil
           </a>
-          <a className="text-[14px] font-medium cursor-pointer">Início</a>
+          <a className="text-[14px] font-medium cursor-pointer underline">
+            Início
+          </a>
         </div>
         <div className="flex flex-col items-center justify-center gap-y-[30px]">
           <span className="text-[30px] font-bold  text-center">
@@ -70,7 +95,11 @@ export function Login() {
         <span className="mt-[37px] text-[16px] font-normal opacity-80 cursor-pointer text-[#FB4E4ECC] underline italic">
           Esqueceu sua senha?
         </span>
-        <RoundButton className="mt-[35px] w-[100px]" type="submit">
+        <RoundButton
+          className="mt-[35px] w-[100px]"
+          type="submit"
+          onClick={onLogInButtonClick}
+        >
           Entrar
         </RoundButton>
       </form>
