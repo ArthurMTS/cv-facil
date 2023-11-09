@@ -4,13 +4,15 @@ import { api } from "@/config/api";
 import iconView from "@/assets/icons/view.png";
 import React, { useContext } from "react";
 import { UserContext } from "@/contexts/user";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [seePassword, setSeePassword] = React.useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const SeePasswordButtonClick = () => {
     setSeePassword(!seePassword);
@@ -32,7 +34,7 @@ export function Login() {
     var base64 = payload.replace("-", "+").replace("_", "/");
     console.log(JSON.parse(window.atob(base64)));
     setUser(JSON.parse(window.atob(base64)));
-    window.location.href = "/";
+    navigate("/");
   };
 
   return (
@@ -59,7 +61,10 @@ export function Login() {
           </a>
         </div>
       </div>
-      <form className="bg-[#FFF] w-screen flex flex-col items-center justify-center ml-[12px] mr-[12px]">
+      <form
+        className="bg-[#FFF] w-screen flex flex-col items-center justify-center ml-[12px] mr-[12px]"
+        onSubmit={onLogInButtonClick}
+      >
         <span className="text-[35px] font-medium mb-[34px]">
           Entre em sua conta
         </span>
@@ -95,11 +100,7 @@ export function Login() {
         <span className="mt-[37px] text-[16px] font-normal opacity-80 cursor-pointer text-[#FB4E4ECC] underline italic">
           Esqueceu sua senha?
         </span>
-        <RoundButton
-          className="mt-[35px] w-[100px]"
-          type="submit"
-          onClick={onLogInButtonClick}
-        >
+        <RoundButton className="mt-[35px] w-[100px]" type="submit">
           Entrar
         </RoundButton>
       </form>
