@@ -32,7 +32,6 @@ export function Login() {
 
     var payload = token.split(".")[1];
     var base64 = payload.replace("-", "+").replace("_", "/");
-    console.log(JSON.parse(window.atob(base64)));
     setUser(JSON.parse(window.atob(base64)));
     navigate("/");
   };
