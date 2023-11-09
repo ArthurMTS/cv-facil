@@ -12,7 +12,7 @@ interface HeaderProps {
   button?: React.ReactNode;
 }
 
-export function Header({ className, button }: HeaderProps) {
+export function Header({ className }: HeaderProps) {
   const { user } = React.useContext(UserContext);
 
   return (
