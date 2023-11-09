@@ -6,7 +6,6 @@ import { UserContext } from "@/contexts/user";
 import login from "@/assets/icons/login.svg";
 import logout from "@/assets/icons/logout.svg";
 import fileTextRed from "@/assets/icons/fileTextRed.svg";
-import { RoundButton } from "..";
 
 interface HeaderProps {
   className?: string;
@@ -41,7 +40,6 @@ export function Header({ className, button }: HeaderProps) {
       <div className="flex items-center">
         {user?.avatar ? (
           <div className="flex items-center">
-            <RoundButton className="w-[100px] h-[35px]">Editar</RoundButton>
             <img
               className="w-10 h-10 rounded-full mx-5 cursor-pointer"
               src={user.avatar}

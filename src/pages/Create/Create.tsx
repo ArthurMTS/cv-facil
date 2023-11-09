@@ -176,7 +176,6 @@ export function Create() {
 
         <Line />
         <div className="self-center flex gap-5">
-          <Link to={"/preview"}>preview</Link>
           <RoundButton type="submit">Finalizar Currículo</RoundButton>
           <RoundButton type="reset" onClick={resetInputs}>
             Limpar
