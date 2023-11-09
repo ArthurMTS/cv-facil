@@ -18,7 +18,7 @@ export function Login() {
     setSeePassword(!seePassword);
   };
 
-  const onLogInButtonClick = async (event: React.FormEvent) => {
+  const onLogInFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const response = await api.post("/login", {
@@ -63,7 +63,7 @@ export function Login() {
       </div>
       <form
         className="bg-[#FFF] w-screen flex flex-col items-center justify-center ml-[12px] mr-[12px]"
-        onSubmit={onLogInButtonClick}
+        onSubmit={onLogInFormSubmit}
       >
         <span className="text-[35px] font-medium mb-[34px]">
           Entre em sua conta
