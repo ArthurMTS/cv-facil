@@ -30,12 +30,12 @@ export function InfoButton ({password}:infoProps){
         <img src={icon} className="w-[25px]"/>
       </button>
       <div className={`${buttonState==true?"hidden":"block"} absolute z-20 ease-in-out delay-150 duration-300 transition-all`}>
-        <ul className="w-[200px] h-[180px] bg-red-400 p-1.5 rounded-md">
-          <li>- 6 digitos</li>
+        <ul className="w-[200px] h-[180px] bg-red-400 p-1.5 rounded-md text-white">
+          <li>- 6 dígitos</li>
           <li>- Letra maiúscula</li>
           <li>- Letra minúscula</li>
-          <li>- caractere especial</li>
-          <li>- Pelo menos um numero</li>
+          <li>- Caractere especial</li>
+          <li>- Pelo menos um número</li>
           <li>- Não possuir sequencias ex:"123", "aaa"</li>
         </ul>
       </div>

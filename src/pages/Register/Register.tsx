@@ -13,18 +13,22 @@ export function Register() {
   const navigate = useNavigate();
 
   const validInfos = async (e: React.FormEvent) => {
-    e.preventDefault();
+    if(password===confirmPassword){
+      e.preventDefault();
 
-    try {
-      await api.post("/users", {
-        name,
-        email,
-        password,
-      });
-      navigate("/login");
-    } catch (error) {
-      alert("Erro no cadastro");
-      console.error(error);
+      try {
+        await api.post("/users", {
+          name,
+          email,
+          password,
+        });
+        navigate("/login");
+      } catch (error) {
+        alert("Erro no cadastro");
+        console.error(error);
+      }
+    }else{
+      alert("As senhas não coincidem")
     }
   };
 
@@ -53,6 +57,7 @@ export function Register() {
           <Input
             label="Nome completo"
             value={name}
+            placeholder="Insira seu nome"
             onChange={(e) => setName(e.target.value)}
             pattern="[A-Za-z\s]+"
             required
@@ -61,6 +66,7 @@ export function Register() {
           <Input
             label="E-mail"
             value={email}
+            placeholder="Insira seu e-mail"
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-[300px]"
@@ -68,6 +74,7 @@ export function Register() {
           <Input
             label="Senha"
             value={password}
+            placeholder="Insira sua senha"
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             required
@@ -79,6 +86,7 @@ export function Register() {
           <Input
             label="Confirme sua senha"
             value={confirmPassword}
+            placeholder="Confirme sua senha"
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
             required
